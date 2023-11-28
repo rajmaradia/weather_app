@@ -1,21 +1,23 @@
-async function getSunriseSunset() {
+function getSunriseSunset() {
     const locationInput = document.getElementById('locationInput').value;
 
-    try {
-        // Use the geocode API to get latitude and longitude
-        const geocodeResponse = await fetch(`https://geocode.maps.co/?q=${locationInput}`);
-        const geocodeData = await geocodeResponse.json();
-        const { lat, lon } = geocodeData.results[0].geometry;
+    // Use the geocode API to get latitude and longitude
+    fetch(`https://geocode.maps.co/?q=${locationInput}`, {mode: 'no-cors'})
+        .then(response => response.json())
+        .then(geocodeData => {
+            const { lat, lon } = geocodeData.results[0].geometry;
 
-        // Use latitude and longitude to get sunrise and sunset times
-        const sunriseSunsetResponse = await fetch(`https://api.sunrise-sunset.io/json?lat=${lat}&lng=${lon}&formatted=0`);
-        const sunriseSunsetData = await sunriseSunsetResponse.json();
-
-        // Update the dashboard with the response data
-        updateDashboard(sunriseSunsetData);
-    } catch (error) {
-        console.error('Error:', error);
-    }
+            // Use latitude and longitude to get sunrise and sunset times
+            return fetch(`https://api.sunrise-sunset.io/json?lat=${lat}&lng=${lon}&formatted=0`);
+        })
+        .then(response => response.json())
+        .then(sunriseSunsetData => {
+            // Update the dashboard with the response data
+            updateDashboard(sunriseSunsetData);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function updateDashboard(data) {
