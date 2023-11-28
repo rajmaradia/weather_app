@@ -8,7 +8,7 @@ function getSunriseSunset() {
             const { lat, lon } = geocodeData.results[0].geometry;
 
             // Use latitude and longitude to get sunrise and sunset times
-            return fetch(`https://api.sunrise-sunset.io/json?lat=${lat}&lng=${lon}&formatted=0`);
+            return fetch(`https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}&formatted=0`);
         })
         .then(response => response.json())
         .then(sunriseSunsetData => {
