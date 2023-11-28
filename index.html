@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sunrise Sunset Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Sunrise Sunset Dashboard</h1>
+        <label for="locationInput">Enter Location:</label>
+        <input type="text" id="locationInput" placeholder="e.g., New York">
+        <button onclick="getSunriseSunset()">Get Sunrise Sunset</button>
+
+        <div id="resultContainer" class="hidden">
+            <h2>Result:</h2>
+            <div id="today">
+                <h3>Today</h3>
+                <p id="todaySunrise"></p>
+                <p id="todaySunset"></p>
+                <p id="todayDawn"></p>
+                <p id="todayDusk"></p>
+                <p id="todayDayLength"></p>
+                <p id="todaySolarNoon"></p>
+                <p id="todayTimeZone"></p>
+            </div>
+            <div id="tomorrow">
+                <h3>Tomorrow</h3>
+                <p id="tomorrowSunrise"></p>
+                <p id="tomorrowSunset"></p>
+                <p id="tomorrowDawn"></p>
+                <p id="tomorrowDusk"></p>
+                <p id="tomorrowDayLength"></p>
+                <p id="tomorrowSolarNoon"></p>
+                <p id="tomorrowTimeZone"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
